@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: vucongtuanduong/grading-result
+  tag: "latest"
+  pullPolicy: Always
+
+service:
+  port: 8084
+
+spring:
+  profilesActive: stg
+
+config:
+  serverUrl: "http://config-server:8086"
+
+secrets:
+  dbSecret: "db-secret"
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

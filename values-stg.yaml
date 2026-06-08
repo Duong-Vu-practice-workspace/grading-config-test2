@@ -1,0 +1,102 @@
+global:
+  domain: vucongtuanduong.dpdns.org
+  prefix: dev1
+
+image:
+  registry: docker.io
+  tag: "v1.0.4"
+  pullPolicy: Always
+
+spring:
+  profilesActive: stg
+
+services:
+  - name: gateway
+    replicaCount: 1
+    image:
+      repository: vucongtuanduong/grading-gateway
+    service:
+      type: ClusterIP
+      port: 8080
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+  - name: assignment-service
+    replicaCount: 1
+    image:
+      repository: vucongtuanduong/grading-assignment
+    service:
+      type: ClusterIP
+      port: 8081
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+  - name: submission-service
+    replicaCount: 1
+    image:
+      repository: vucongtuanduong/grading-submission
+    service:
+      type: ClusterIP
+      port: 8082
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+  - name: executor-service
+    replicaCount: 1
+    image:
+      repository: vucongtuanduong/grading-executor
+    service:
+      type: ClusterIP
+      port: 8083
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: 500m
+        memory: 512Mi
+
+  - name: result-service
+    replicaCount: 1
+    image:
+      repository: vucongtuanduong/grading-result
+    service:
+      type: ClusterIP
+      port: 8084
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+  - name: notification-service
+    replicaCount: 1
+    image:
+      repository: vucongtuanduong/grading-notification
+    service:
+      type: ClusterIP
+      port: 8085
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi

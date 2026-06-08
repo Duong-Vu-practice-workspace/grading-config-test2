@@ -7,6 +7,7 @@ image:
 
 service:
   port: 8083
+  nodePort: 30003
 
 spring:
   profilesActive: stg

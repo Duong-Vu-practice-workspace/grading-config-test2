@@ -3,18 +3,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "grading.fullname" $ }}-{{ .name }}
+  name: {{ .name }}
   labels:
-    app: {{ include "grading.name" $ }}-{{ .name }}
+    app: {{ .name }}
 spec:
   replicas: {{ .replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "grading.name" $ }}-{{ .name }}
+      app: {{ .name }}
   template:
     metadata:
       labels:
-        app: {{ include "grading.name" $ }}-{{ .name }}
+        app: {{ .name }}
     spec:
       containers:
         - name: {{ .name }}

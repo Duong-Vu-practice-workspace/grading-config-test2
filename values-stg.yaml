@@ -1,6 +1,6 @@
 global:
   domain: vucongtuanduong.dpdns.org
-  prefix: dev1
+  prefix: dev2
 
 image:
   registry: docker.io

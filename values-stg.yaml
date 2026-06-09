@@ -4,7 +4,7 @@ global:
 
 image:
   registry: docker.io
-  tag: "v1.0.7"
+  tag: "latest"
   pullPolicy: Always
 
 spring:
@@ -93,6 +93,21 @@ services:
     service:
       type: ClusterIP
       port: 8085
+    resources:
+      limits:
+        cpu: 500m
+        memory: 512Mi
+      requests:
+        cpu: 200m
+        memory: 256Mi
+
+  - name: config-server
+    replicaCount: 1
+    image:
+      repository: vucongtuanduong/grading-config-server
+    service:
+      type: ClusterIP
+      port: 8086
     resources:
       limits:
         cpu: 500m
